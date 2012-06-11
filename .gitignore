@@ -1,0 +1,14 @@
+*#*
+*~
+.*
+!.gitignore
+
+bin
+develop-eggs
+devsrc
+dist
+downloads
+eggs
+parts
+src/packages
+var

@@ -1,0 +1,61 @@
+WYSIHTML5 widget
+================
+
+Features
+--------
+
+    - renders textarea with wysihtml5 css class and provides a wysihtml5
+      resources.
+
+Load requirements::
+
+    >>> import yafowil.loader
+    >>> import yafowil.widget.wysihtml5
+
+Test widget::
+
+    >>> from yafowil.base import factory
+
+Render widget::
+
+    >>> widget = factory('wysihtml5', 'rt', props={'required': True})
+    >>> widget()
+    u'<textarea class="wysihtml5" cols="80" id="input-rt" name="rt" required="required" rows="25"></textarea>'
+
+Widget extraction::
+
+    >>> request = {'rt': ''}
+    >>> data = widget.extract(request)
+
+No input was given::
+
+    >>> data.errors
+    [ExtractionError('Mandatory field was empty',)]
+
+Empty string in extracted::
+
+    >>> data.extracted
+    ''
+
+Widget extraction. Returns markup from tinymce::
+
+    >>> request = {'rt': '<p>1</p>'}
+    >>> data = widget.extract(request)
+    >>> data.errors
+    []
+
+    >>> data.extracted
+    '<p>1</p>'
+
+    >>> widget(data)
+    u'<textarea class="wysihtml5" cols="80" id="input-rt" name="rt" required="required" rows="25"><p>1</p></textarea>'
+
+Display renderer::
+
+    >>> widget = factory('wysihtml5', 'rt', value='<p>foo</p>', mode='display')
+    >>> widget()
+    u'<div class="display-wysihtml5"><p>foo</p></div>'
+
+    >>> widget = factory('wysihtml5', 'rt', mode='display')
+    >>> widget()
+    u'<div class="display-wysihtml5"></div>'
