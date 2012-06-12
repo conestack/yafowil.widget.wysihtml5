@@ -5,4 +5,4 @@ def get_example():
     part['text'] = factory('field:label:error:wysihtml5', props={
         'label': 'Enter some text (local, lorem ipsum)',
         'value': ''})
-    return {'widget': part}
+    return [{'widget': part, 'doc': 'TODO'}]
