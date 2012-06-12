@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import sys, os
+import os
 
 version = '1.2'
 shortdesc = 'wysihtml5 richtext widget for YAFOWIL with bootstrap integration'
@@ -44,6 +44,7 @@ setup(name='yafowil.widget.wysihtml5',
       resourcedir = yafowil.widget.wysihtml5:get_resource_dir
       javascripts = yafowil.widget.wysihtml5:get_js
       stylesheets = yafowil.widget.wysihtml5:get_css
+      example = yafowil.widget.wysihtml5.example:get_example
       """,
       )
 
