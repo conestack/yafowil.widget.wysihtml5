@@ -15,6 +15,10 @@ def get_js():
         'thirdparty': True,
         'order': 20,
     }, {
+        'resource': 'wysihtml5/parser_rules/advanced.js',
+        'thirdparty': True,
+        'order': 20,
+    }, {
         'resource': 'widget.js',
         'thirdparty': False,
         'order': 21,
