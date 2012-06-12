@@ -28,13 +28,8 @@ factory.doc['blueprint']['wysihtml5'] = \
 """
 
 factory.defaults['wysihtml5.default'] = ''
-
 factory.defaults['wysihtml5.wrap'] = None
-
-factory.defaults['wysihtml5.cols'] = 80
-
+factory.defaults['wysihtml5.cols'] = 200
 factory.defaults['wysihtml5.rows'] = 5
-
 factory.defaults['wysihtml5.readonly'] = None
-
 factory.defaults['wysihtml5.class'] = 'wysihtml5'
