@@ -34,4 +34,7 @@ def get_css():
         {'resource': 'bootstrap-wysihtml5/src/bootstrap-wysihtml5.css',
          'thirdparty': False,
          'order': 21,},
+        {'resource': 'widget.css',
+         'thirdparty': False,
+         'order': 22,},
     ]
