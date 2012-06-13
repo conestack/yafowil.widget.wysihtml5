@@ -34,7 +34,7 @@ if (typeof(window['yafowil']) == "undefined") yafowil = {};
                         "font-styles": true,
                         "emphasis": true,
                         "lists": true,
-                        "html": true,
+                        "html": false, // doesnt work currently
                         "link": true,
                         "image": true
                     });
