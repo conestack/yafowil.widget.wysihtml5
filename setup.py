@@ -41,9 +41,6 @@ setup(name='yafowil.widget.wysihtml5',
       entry_points="""
       [yafowil.plugin]
       register = yafowil.widget.wysihtml5:register
-      resourcedir = yafowil.widget.wysihtml5:get_resource_dir
-      javascripts = yafowil.widget.wysihtml5:get_js
-      stylesheets = yafowil.widget.wysihtml5:get_css
       example = yafowil.widget.wysihtml5.example:get_example
       """,
       )
