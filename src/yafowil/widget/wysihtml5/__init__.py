@@ -2,37 +2,34 @@ import os
 from yafowil.base import factory
 
 
+# XXX: use fanstatic
 resourcedir = os.path.join(os.path.dirname(__file__), 'resources')
 
 js = [{
+    'group': 'wysihtml',
     'resource': 'wysihtml5/dist/wysihtml5-0.3.0.js',
-    'thirdparty': True,
     'order': 21,
 }, {
+    'group': 'wysihtml',
     'resource': 'bootstrap-wysihtml5/lib/js/bootstrap.min.js',
-    'thirdparty': True,
     'order': 22,
 }, {
+    'group': 'wysihtml',
     'resource': 'bootstrap-wysihtml5/src/bootstrap-wysihtml5.js',
-    'thirdparty': True,
     'order': 22,
 }, {
+    'group': 'yafowil.widget.wysihtml',
     'resource': 'widget.js',
-    'thirdparty': False,
     'order': 23,
 }]
 
-# 'resource': 'bootstrap-wysihtml5/lib/bootstrap.min.css'
-# 'thirdparty': True,
-# 'order': 20
-
 css = [{
+    'group': 'wysihtml',
     'resource': 'bootstrap-wysihtml5/src/bootstrap-wysihtml5.css',
-    'thirdparty': False,
     'order': 21,
 }, {
+    'group': 'yafowil.widget.wysihtml',
     'resource': 'widget.css',
-    'thirdparty': False,
     'order': 22,
 }]
 
