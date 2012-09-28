@@ -1,3 +1,10 @@
 iframe.wysihtml5-sandbox { 
-    width:100% !important;
-    height:30em !important; }
+    width:98% !important;
+    height:30em !important;
+}
+.wysihtml5-toolbar .btn {
+	height:18px;
+}
+.wysihtml5-toolbar .btn i {
+	margin-top:2px;
+}
