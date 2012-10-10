@@ -6,7 +6,7 @@ It is based on XING's `wysihtml5 https://github.com/xing/wysihtml5`_
 editor with optionally `bootstrap-wysihtml5
 https://github.com/jhollingworth/bootstrap-wysihtml5`_ integration.
 
-- `Documentation <http://docs.yafowil.info/yafowil/blueprints.html#wysihtml5>`_
+- `Documentation <http://docs.yafowil.info/en/latest/blueprints.html#wysihtml5>`_
 - `DEMO - see it Live <http://demo.yafowil.info/++widget++yafowil.widget.wysihtml5/index.html>`_
 
 
