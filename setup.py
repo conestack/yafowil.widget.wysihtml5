@@ -1,5 +1,9 @@
-from setuptools import setup, find_packages
 import os
+from setuptools import (
+    setup,
+    find_packages,
+)
+
 
 version = '1.0'
 shortdesc = 'wysihtml5 richtext widget for YAFOWIL with bootstrap integration'
@@ -8,16 +12,17 @@ longdesc += open(os.path.join(os.path.dirname(__file__), 'HISTORY.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()
 tests_require = ['yafowil[test]']
 
+
 setup(name='yafowil.widget.wysihtml5',
       version=version,
       description=shortdesc,
       long_description=longdesc,
       classifiers=[
-            'Environment :: Web Environment',
-            'Operating System :: OS Independent',
-            'Programming Language :: Python',
-            'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-            'License :: OSI Approved :: BSD License',
+          'Environment :: Web Environment',
+          'Operating System :: OS Independent',
+          'Programming Language :: Python',
+          'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+          'License :: OSI Approved :: BSD License',
       ],
       keywords='',
       author='BlueDynamics Alliance',
@@ -42,6 +47,4 @@ setup(name='yafowil.widget.wysihtml5',
       [yafowil.plugin]
       register = yafowil.widget.wysihtml5:register
       example = yafowil.widget.wysihtml5.example:get_example
-      """,
-      )
-
+      """)
