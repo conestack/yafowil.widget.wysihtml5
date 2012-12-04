@@ -52,7 +52,11 @@
       link.style.display = "none";
       return;
     }
-    
+    var lang = parent.editor.textarea.element.getAttribute("lang");
+    if (lang) {
+      inputAttributes.lang = lang;
+    }
+
     var wrapper = document.createElement("div");
     
     wysihtml5.lang.object(wrapperStyles).merge({
@@ -64,7 +68,7 @@
     dom.insert(wrapper).into(link);
     
     dom.setStyles(inputStyles).on(input);
-    dom.setAttributes(inputAttributes).on(input)
+    dom.setAttributes(inputAttributes).on(input);
     
     dom.setStyles(wrapperStyles).on(wrapper);
     dom.setStyles(linkStyles).on(link);

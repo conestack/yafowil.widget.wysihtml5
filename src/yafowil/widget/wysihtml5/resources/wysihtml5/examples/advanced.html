@@ -38,7 +38,7 @@
   
   #toolbar,
   textarea {
-    width: 900px;
+    width: 920px;
     padding: 5px;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -136,12 +136,12 @@
 <small>powered by <a href="https://github.com/xing/wysihtml5" target="_blank">wysihtml5</a>.</small>
 
 <script src="../parser_rules/advanced.js"></script>
-<script src="../dist/wysihtml5-0.3.0.js"></script>
+<script src="../dist/wysihtml5-0.4.0pre.js"></script>
 <script>
   var editor = new wysihtml5.Editor("textarea", {
-    toolbar:      "toolbar",
-    stylesheets:  "css/stylesheet.css",
-    parserRules:  wysihtml5ParserRules
+    toolbar:        "toolbar",
+    stylesheets:    "css/stylesheet.css",
+    parserRules:    wysihtml5ParserRules
   });
   
   var log = document.getElementById("log");

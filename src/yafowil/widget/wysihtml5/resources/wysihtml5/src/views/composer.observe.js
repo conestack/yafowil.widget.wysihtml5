@@ -24,8 +24,7 @@
         iframe              = this.sandbox.getIframe(),
         element             = this.element,
         focusBlurElement    = browser.supportsEventsInIframeCorrectly() ? element : this.sandbox.getWindow(),
-        // Firefox < 3.5 doesn't support the drop event, instead it supports a so called "dragdrop" event which behaves almost the same
-        pasteEvents         = browser.supportsEvent("drop") ? ["drop", "paste"] : ["dragdrop", "paste"];
+        pasteEvents         = ["drop", "paste"];
 
     // --------- destroy:composer event ---------
     dom.observe(iframe, "DOMNodeRemoved", function() {
@@ -40,7 +39,6 @@
         that.parent.fire("destroy:composer");
       }
     }, 250);
-
 
     // --------- Focus & blur logic ---------
     dom.observe(focusBlurElement, "focus", function() {
@@ -57,56 +55,16 @@
       }
       that.parent.fire("blur").fire("blur:composer");
     });
-    
-    if (wysihtml5.browser.isIos()) {
-      // When on iPad/iPhone/IPod after clicking outside of editor, the editor loses focus
-      // but the UI still acts as if the editor has focus (blinking caret and onscreen keyboard visible)
-      // We prevent that by focusing a temporary input element which immediately loses focus
-      dom.observe(element, "blur", function() {
-        var input = element.ownerDocument.createElement("input"),
-            originalScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
-            originalScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-        try {
-          that.selection.insertNode(input);
-        } catch(e) {
-          element.appendChild(input);
-        }
-        input.focus();
-        input.parentNode.removeChild(input);
-        
-        window.scrollTo(originalScrollLeft, originalScrollTop);
-      });
-    }
 
     // --------- Drag & Drop logic ---------
     dom.observe(element, "dragenter", function() {
       that.parent.fire("unset_placeholder");
     });
 
-    if (browser.firesOnDropOnlyWhenOnDragOverIsCancelled()) {
-      dom.observe(element, ["dragover", "dragenter"], function(event) {
-        event.preventDefault();
-      });
-    }
-
-    dom.observe(element, pasteEvents, function(event) {
-      var dataTransfer = event.dataTransfer,
-          data;
-
-      if (dataTransfer && browser.supportsDataTransfer()) {
-        data = dataTransfer.getData("text/html") || dataTransfer.getData("text/plain");
-      }
-      if (data) {
-        element.focus();
-        that.commands.exec("insertHTML", data);
+    dom.observe(element, pasteEvents, function() {
+      setTimeout(function() {
         that.parent.fire("paste").fire("paste:composer");
-        event.stopPropagation();
-        event.preventDefault();
-      } else {
-        setTimeout(function() {
-          that.parent.fire("paste").fire("paste:composer");
-        }, 0);
-      }
+      }, 0);
     });
 
     // --------- neword event ---------
@@ -117,7 +75,7 @@
       }
     });
 
-    this.parent.observe("paste:composer", function() {
+    this.parent.on("paste:composer", function() {
       setTimeout(function() { that.parent.fire("newword:composer"); }, 0);
     });
 
@@ -127,6 +85,34 @@
         var target = event.target;
         if (target.nodeName === "IMG") {
           that.selection.selectNode(target);
+          event.preventDefault();
+        }
+      });
+    }
+    
+    if (browser.hasHistoryIssue() && browser.supportsSelectionModify()) {
+      dom.observe(element, "keydown", function(event) {
+        if (!event.metaKey && !event.ctrlKey) {
+          return;
+        }
+        
+        var keyCode   = event.keyCode,
+            win       = element.ownerDocument.defaultView,
+            selection = win.getSelection();
+        
+        if (keyCode === 37 || keyCode === 39) {
+          if (keyCode === 37) {
+            selection.modify("extend", "left", "lineboundary");
+            if (!event.shiftKey) {
+              selection.collapseToStart();
+            }
+          }
+          if (keyCode === 39) {
+            selection.modify("extend", "right", "lineboundary");
+            if (!event.shiftKey) {
+              selection.collapseToEnd();
+            }
+          }
           event.preventDefault();
         }
       });
@@ -160,7 +146,24 @@
         event.preventDefault();
       }
     });
+    
+    // --------- IE 8+9 focus the editor when the iframe is clicked (without actually firing the 'focus' event on the <body>) ---------
+    if (browser.hasIframeFocusIssue()) {
+      dom.observe(this.iframe, "focus", function() {
+        setTimeout(function() {
+          if (that.doc.querySelector(":focus") !== that.element) {
+            that.focus();
+          }
+        }, 0);
+      });
 
+      dom.observe(this.element, "blur", function() {
+        setTimeout(function() {
+          that.selection.getSelection().removeAllRanges();
+        }, 0);
+      });
+    }
+    
     // --------- Show url in tooltip when hovering links or images ---------
     var titlePrefixes = {
       IMG: "Image: ",

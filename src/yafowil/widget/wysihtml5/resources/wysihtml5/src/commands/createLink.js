@@ -59,7 +59,7 @@
         dom.setTextContent(anchor, attributes.text || anchor.href);
         whiteSpace = doc.createTextNode(" ");
         composer.selection.setAfter(anchor);
-        composer.selection.insertNode(whiteSpace);
+        dom.insert(whiteSpace).after(anchor);
         elementToSetCaretAfter = whiteSpace;
       }
     }
@@ -96,10 +96,6 @@
 
     state: function(composer, command) {
       return wysihtml5.commands.formatInline.state(composer, command, "A");
-    },
-
-    value: function() {
-      return undef;
     }
   };
 })(wysihtml5);
