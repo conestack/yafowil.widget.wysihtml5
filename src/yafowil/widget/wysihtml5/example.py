@@ -18,7 +18,9 @@ Richtext widget using bootstrap-wysihtml5.
         'html': True,
         'link': True,
         'image': True,
-        })
+        'focus': True,
+        'resize': True
+    })
 
 """
 
@@ -33,7 +35,9 @@ def get_example():
         'html': True,
         'link': True,
         'image': True,
-        })
+        'focus': True,
+        'resize': True
+    })
 
     return [{'widget': ex1,
             'doc': DOC_WYSIHTML5,

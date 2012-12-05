@@ -20,7 +20,9 @@ wysihtml5_options = [
     'lists',
     'html',
     'link',
-    'image'
+    'image',
+    'focus',
+    'resize'
 ]
 
 @managedprops(*wysihtml5_options)
@@ -70,6 +72,19 @@ factory.doc['props']['wysihtml5.readonly'] = \
 
 factory.defaults['wysihtml5.class'] = 'wysihtml5'
 
+factory.defaults['wysihtml5.focus'] = False
+factory.doc['props']['wysihtml5.focus'] = \
+"""Set the focus to the editor after loading.
+Options: widget.
+Values: [True|False (default)].
+"""
+
+factory.defaults['wysihtml5.resize'] = False
+factory.doc['props']['wysihtml5.resize'] = \
+"""Resize the widget, if content grows out of the textareas display size.
+Options: widget.
+Values: [True|False (default)].
+"""
 
 factory.defaults['wysihtml5.font-styles'] = None
 factory.doc['props']['wysihtml5.font-styles'] = \
