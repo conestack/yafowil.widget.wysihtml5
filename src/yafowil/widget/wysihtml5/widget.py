@@ -15,6 +15,7 @@ from yafowil.utils import (
 
 wysihtml5_options = [
     'font-styles',
+    'justify',
     'color',
     'emphasis',
     'lists',
@@ -89,6 +90,13 @@ Values: [True|False (default)].
 factory.defaults['wysihtml5.font-styles'] = None
 factory.doc['props']['wysihtml5.font-styles'] = \
 """Show the font styles toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.justify'] = None
+factory.doc['props']['wysihtml5.justify'] = \
+"""Show the justify styles toolbar buttons.
 Options: bootstrap-wysihtml5.
 Values: [True|False|None (use default)].
 """

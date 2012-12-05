@@ -45,12 +45,54 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
                     }
                     options_extra = make_options_extra(options, extra_keys);
 
-                    if (options.stylesheets === undefined) { options.stylesheets = []; }
+                    // options processing
+                    options.stylesheets = []; // bootstrap-wysihtml5 tries to load own stylesheets, which fails. so set back anyways.
+                    options.stylesheets.push('/++resource++yafowil.widget.wysihtml5/widget.css');
                     if (options.color===true) {
+                        // options.stylesheets = [];
                         options.stylesheets.push('/++resource++yafowil.widget.wysihtml5/bootstrap-wysihtml5/lib/css/wysiwyg-color.css');
                     }
-                    var editor = elem.wysihtml5(options).data("wysihtml5").editor;
+                    if (options.justify === true) {
 
+                        $.fn.wysihtml5.defaultOptions.justify = true;
+
+                        options.customTemplates = {
+                            justify: function(locale) {
+                                return "<li>" +
+                                  "<div class='btn-group'>" +
+                                      "<a class='btn' data-wysihtml5-command='justifyLeft' title='Align left'><i class='icon-align-left'></i></a>" +
+                                      "<a class='btn' data-wysihtml5-command='justifyCenter' title='Align center'><i class='icon-align-center'></i></a>" +
+                                      "<a class='btn' data-wysihtml5-command='justifyRight' title='Align right'><i class='icon-align-right'></i></a>" +
+                                  "</div>" +
+                                "</li>";
+                            }
+                        };
+
+                        /*
+                        options.locale = {
+                            justify: {
+                                left: "Align left",
+                                center: "Align center",
+                                right: "Align right"
+                            }
+                        };
+                        */
+
+                        options.parserRules = {
+                            classes: {
+                                // (path_to_project/lib/css/wysiwyg-justify.css)
+                                "wysiwyg-text-align-left": 1,
+                                "wysiwyg-text-align-center": 1,
+                                "wysiwyg-text-align-right": 1
+                            }
+                        };
+
+                    }
+
+                    // create the editor
+                    var editor = elem.wysihtml5('deepExtend', options).data("wysihtml5").editor;
+
+                    // use some extra features
                     if (options_extra.focus === true) {
                         editor.on("load", function() {
                             editor.focus();

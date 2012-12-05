@@ -1,4 +1,4 @@
-iframe.wysihtml5-sandbox { 
+iframe.wysihtml5-sandbox {
     width:98% !important;
     height:30em !important;
 }
@@ -7,4 +7,14 @@ iframe.wysihtml5-sandbox {
 }
 .wysihtml5-toolbar .btn i {
 	margin-top:2px;
+}
+
+.wysiwyg-text-align-left {
+    text-align: left;
+}
+.wysiwyg-text-align-center {
+    text-align: center;
+}
+.wysiwyg-text-align-right {
+    text-align: right;
 }
