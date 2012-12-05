@@ -28,9 +28,8 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
 
                 $('textarea.wysihtml5', context).each(function(event) {
 
-                    var id = $(this).attr('id');
-                    var textarea = $('#' + id);
-                    textarea.wysihtml5({
+                    var elem = $(this);
+                    elem.wysihtml5({
                         "font-styles": true,
                         "emphasis": true,
                         "lists": true,
@@ -39,7 +38,7 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
                         "image": true
                     });
 
-                    var editor = textarea.wysihtml5().data("wysihtml5").editor;
+                    var editor = elem.wysihtml5().data("wysihtml5").editor;
                     var wysihtml5_resize_iframe = function() {
                         editor.composer.iframe.style.height = editor.composer.element.scrollHeight + "px";
                     };
