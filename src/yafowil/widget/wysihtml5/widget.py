@@ -7,7 +7,26 @@ from yafowil.common import (
     generic_required_extractor,
     textarea_renderer,
 )
+from yafowil.utils import (
+    managedprops,
+    data_attrs_helper
+)
 
+
+wysihtml5_options = [
+    'font-styles',
+    'color',
+    'emphasis',
+    'lists',
+    'html',
+    'link',
+    'image'
+]
+
+@managedprops(*wysihtml5_options)
+def wysihtml5_textarea_renderer(widget, data):
+    custom_attrs = data_attrs_helper(widget, data, wysihtml5_options)
+    return textarea_renderer(widget, data, **custom_attrs)
 
 def wysihtml5_display_renderer(widget, data):
     value = fetch_value(widget, data)
@@ -19,7 +38,7 @@ def wysihtml5_display_renderer(widget, data):
 factory.register(
     'wysihtml5',
     extractors=[generic_extractor, generic_required_extractor],
-    edit_renderers=[textarea_renderer],
+    edit_renderers=[wysihtml5_textarea_renderer],
     display_renderers=[wysihtml5_display_renderer])
 
 factory.doc['blueprint']['wysihtml5'] = \
@@ -50,3 +69,53 @@ factory.doc['props']['wysihtml5.readonly'] = \
 """
 
 factory.defaults['wysihtml5.class'] = 'wysihtml5'
+
+
+factory.defaults['wysihtml5.font-styles'] = None
+factory.doc['props']['wysihtml5.font-styles'] = \
+"""Show the font styles toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.color'] = None
+factory.doc['props']['wysihtml5.color'] = \
+"""Show the color styles toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.emphasis'] = None
+factory.doc['props']['wysihtml5.emphasis'] = \
+"""Show the emphasis toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.lists'] = None
+factory.doc['props']['wysihtml5.lists'] = \
+"""Show the list toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.html'] = None
+factory.doc['props']['wysihtml5.html'] = \
+"""Show the html toolbar button.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.link'] = None
+factory.doc['props']['wysihtml5.link'] = \
+"""Show the link toolbar button.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.image'] = None
+factory.doc['props']['wysihtml5.image'] = \
+"""Show the image toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""

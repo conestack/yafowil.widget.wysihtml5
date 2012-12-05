@@ -29,16 +29,14 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
                 $('textarea.wysihtml5', context).each(function(event) {
 
                     var elem = $(this);
-                    elem.wysihtml5({
-                        "font-styles": true,
-                        "emphasis": true,
-                        "lists": true,
-                        "html": false, // doesnt work currently
-                        "link": true,
-                        "image": true
-                    });
+                    var options = elem.data();
+                    if (options.stylesheets === undefined) { options.stylesheets = []; }
+                    options.stylesheets.push('/++resource++yafowil.widget.wysihtml5/bootstrap-wysihtml5/lib/css/wysiwyg-color.css');
+                    var editor = elem.wysihtml5(options);
 
-                    var editor = elem.wysihtml5().data("wysihtml5").editor;
+                    /*
+                    var editor = elem.wysihtml5(options).data("wysihtml5").editor;
+
                     var wysihtml5_resize_iframe = function() {
                         editor.composer.iframe.style.height = editor.composer.element.scrollHeight + "px";
                     };
@@ -47,7 +45,7 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
                         editor.composer.element.addEventListener("blur", wysihtml5_resize_iframe, false);
                         editor.composer.element.addEventListener("focus", wysihtml5_resize_iframe, false);
                     });
-
+                    */
                 });
 
             }

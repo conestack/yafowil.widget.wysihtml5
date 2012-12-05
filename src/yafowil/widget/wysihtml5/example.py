@@ -2,25 +2,39 @@ from yafowil.base import factory
 
 
 DOC_WYSIHTML5 = """
-WYSIHTML5
----------
+bootstrap-wysihtml5
+-------------------
 
-Richtext widget using WYSIHTML5.
+Richtext widget using bootstrap-wysihtml5.
 
 .. code-block:: python
 
-    part['text'] = factory('#field:wysihtml5', props={
-        'label': 'WYSIHTML5 Field'})
+    editor = factory('#field:wysihtml5', props={
+        'label': 'wysihtml5 Field',
+        'font-styles': True,
+        'color': True,
+        'emphasis': True,
+        'lists': True,
+        'html': True,
+        'link': True,
+        'image': True,
+        })
+
 """
 
-def wysihtml5():
-    part = factory(u'fieldset', name='yafowilwidgetwysihtml5')
-    part['text'] = factory('#field:wysihtml5', props={
-        'label': 'WYSIHTML5 Field'})
-    return {'widget': part,
-            'doc': DOC_WYSIHTML5,
-            'title': 'WYSIHTML5 Field'}
-
-
 def get_example():
-    return [wysihtml5()]
+    ex1 = factory(u'fieldset', name='yafowil_wysihtml5')
+    ex1['text'] = factory('#field:wysihtml5', props={
+        'label': 'wysihtml5 Field',
+        'font-styles': True,
+        'color': True,
+        'emphasis': True,
+        'lists': True,
+        'html': True,
+        'link': True,
+        'image': True,
+        })
+
+    return [{'widget': ex1,
+            'doc': DOC_WYSIHTML5,
+            'title': 'wysihtml5 Field'}]
