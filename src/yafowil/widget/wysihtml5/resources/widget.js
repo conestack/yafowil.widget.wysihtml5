@@ -4,7 +4,7 @@
  * Optional: bdajax
  */
 
-if (typeof(window['yafowil']) == "undefined") yafowil = {};
+if (typeof(window.yafowil) == "undefined") yafowil = {};
 
 (function($) {
 
