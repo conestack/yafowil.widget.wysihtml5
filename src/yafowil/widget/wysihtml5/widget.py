@@ -14,17 +14,19 @@ from yafowil.utils import (
 
 
 wysihtml5_options = [
-    'font-styles',
-    'justify',
-    'color',
-    'emphasis',
-    'lists',
-    'html',
-    'link',
-    'image',
+    # extra options
     'focus',
     'resize',
-    'size'
+    'size',
+    # toolbar options
+    'color',
+    'emphasis',
+    'font-styles',
+    'html',
+    'image',
+    'justify',
+    'link',
+    'lists',
 ]
 
 @managedprops(*wysihtml5_options)
@@ -74,6 +76,9 @@ factory.doc['props']['wysihtml5.readonly'] = \
 
 factory.defaults['wysihtml5.class'] = 'wysihtml5'
 
+#
+# Extra options
+
 factory.defaults['wysihtml5.focus'] = False
 factory.doc['props']['wysihtml5.focus'] = \
 """Set the focus to the editor after loading.
@@ -95,19 +100,8 @@ Options: bootstrap-wysihtml5.
 Values: ['large'|'small'|'mini'|None (default)].
 """
 
-factory.defaults['wysihtml5.font-styles'] = None
-factory.doc['props']['wysihtml5.font-styles'] = \
-"""Show the font styles toolbar buttons.
-Options: bootstrap-wysihtml5.
-Values: [True|False|None (use default)].
-"""
-
-factory.defaults['wysihtml5.justify'] = None
-factory.doc['props']['wysihtml5.justify'] = \
-"""Show the justify styles toolbar buttons.
-Options: bootstrap-wysihtml5.
-Values: [True|False|None (use default)].
-"""
+#
+# Toolbar Options
 
 factory.defaults['wysihtml5.color'] = None
 factory.doc['props']['wysihtml5.color'] = \
@@ -123,9 +117,9 @@ Options: bootstrap-wysihtml5.
 Values: [True|False|None (use default)].
 """
 
-factory.defaults['wysihtml5.lists'] = None
-factory.doc['props']['wysihtml5.lists'] = \
-"""Show the list toolbar buttons.
+factory.defaults['wysihtml5.font-styles'] = None
+factory.doc['props']['wysihtml5.font-styles'] = \
+"""Show the font styles toolbar buttons.
 Options: bootstrap-wysihtml5.
 Values: [True|False|None (use default)].
 """
@@ -137,6 +131,20 @@ Options: bootstrap-wysihtml5.
 Values: [True|False|None (use default)].
 """
 
+factory.defaults['wysihtml5.image'] = None
+factory.doc['props']['wysihtml5.image'] = \
+"""Show the image toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
+factory.defaults['wysihtml5.justify'] = None
+factory.doc['props']['wysihtml5.justify'] = \
+"""Show the justify styles toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: [True|False|None (use default)].
+"""
+
 factory.defaults['wysihtml5.link'] = None
 factory.doc['props']['wysihtml5.link'] = \
 """Show the link toolbar button.
@@ -144,9 +152,9 @@ Options: bootstrap-wysihtml5.
 Values: [True|False|None (use default)].
 """
 
-factory.defaults['wysihtml5.image'] = None
-factory.doc['props']['wysihtml5.image'] = \
-"""Show the image toolbar buttons.
+factory.defaults['wysihtml5.lists'] = None
+factory.doc['props']['wysihtml5.lists'] = \
+"""Show the list toolbar buttons.
 Options: bootstrap-wysihtml5.
 Values: [True|False|None (use default)].
 """
