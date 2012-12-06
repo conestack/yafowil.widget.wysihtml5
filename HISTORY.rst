@@ -2,8 +2,17 @@
 History
 =======
 
-1.1 (unreleased)
-----------------
+1.1dev (unreleased)
+-------------------
+
+- Add configuration options to control the toolbar (font-styles, color,
+  emphasis, lists, html, link, image plus extra justify toolbar buttons) as
+  well as additional extra configuration options (toolbar size, focus after
+  loading and resize automatically).
+  [thet]
+
+- Pass Javascript widget configuration options via data attributes.
+  [thet]
 
 - Don't register the bootstrap.min.js file. This should be done wether with
   yafowil.bootstrap or another Twitter Bootstrap integration package.
