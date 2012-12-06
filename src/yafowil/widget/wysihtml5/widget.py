@@ -23,7 +23,8 @@ wysihtml5_options = [
     'link',
     'image',
     'focus',
-    'resize'
+    'resize',
+    'size'
 ]
 
 @managedprops(*wysihtml5_options)
@@ -85,6 +86,13 @@ factory.doc['props']['wysihtml5.resize'] = \
 """Resize the widget, if content grows out of the textareas display size.
 Options: widget.
 Values: [True|False (default)].
+"""
+
+factory.defaults['wysihtml5.size'] = False
+factory.doc['props']['wysihtml5.size'] = \
+"""Size of toolbar buttons.
+Options: bootstrap-wysihtml5.
+Values: ['large'|'small'|'mini'|None (default)].
 """
 
 factory.defaults['wysihtml5.font-styles'] = None

@@ -11,6 +11,7 @@ Richtext widget using bootstrap-wysihtml5.
 
     editor = factory('#field:wysihtml5', props={
         'label': 'wysihtml5 Field',
+        'size': 'mini',
         'font-styles': True,
         'color': True,
         'emphasis': True,
@@ -29,6 +30,7 @@ def get_example():
     ex1 = factory(u'fieldset', name='yafowil_wysihtml5')
     ex1['text'] = factory('#field:wysihtml5', props={
         'label': 'wysihtml5 Field',
+        'size': 'mini',
         'font-styles': True,
         'color': True,
         'emphasis': True,

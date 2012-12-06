@@ -54,15 +54,16 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
                     }
                     if (options.justify === true) {
 
-                        $.fn.wysihtml5.defaultOptions.justify = true;
+                        $.fn.wysihtml5.defaultOptions.justify = true; // extend defaultOptions
 
                         options.customTemplates = {
-                            justify: function(locale) {
+                            justify: function(locale, options) {
+                                var size = (options && options.size) ? ' btn-'+options.size : '';
                                 return "<li>" +
                                   "<div class='btn-group'>" +
-                                      "<a class='btn' data-wysihtml5-command='justifyLeft' title='Align left'><i class='icon-align-left'></i></a>" +
-                                      "<a class='btn' data-wysihtml5-command='justifyCenter' title='Align center'><i class='icon-align-center'></i></a>" +
-                                      "<a class='btn' data-wysihtml5-command='justifyRight' title='Align right'><i class='icon-align-right'></i></a>" +
+                                      "<a class='btn" + size + "' data-wysihtml5-command='justifyLeft' title='Align left'><i class='icon-align-left'></i></a>" +
+                                      "<a class='btn" + size + "' data-wysihtml5-command='justifyCenter' title='Align center'><i class='icon-align-center'></i></a>" +
+                                      "<a class='btn" + size + "' data-wysihtml5-command='justifyRight' title='Align right'><i class='icon-align-right'></i></a>" +
                                   "</div>" +
                                 "</li>";
                             }
