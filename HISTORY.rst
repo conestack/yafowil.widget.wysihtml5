@@ -8,7 +8,7 @@ History
 - Add configuration options to control the toolbar (font-styles, color,
   emphasis, lists, html, link, image plus extra justify toolbar buttons) as
   well as additional extra configuration options (toolbar size, focus after
-  loading and resize automatically).
+  loading, resize automatically and additional stylesheet).
   [thet]
 
 - Pass Javascript widget configuration options via data attributes.

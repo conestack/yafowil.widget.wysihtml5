@@ -18,6 +18,7 @@ wysihtml5_options = [
     'focus',
     'resize',
     'size',
+    'stylesheet',
     # toolbar options
     'color',
     'emphasis',
@@ -98,6 +99,13 @@ factory.doc['props']['wysihtml5.size'] = \
 """Size of toolbar buttons.
 Options: bootstrap-wysihtml5.
 Values: ['large'|'small'|'mini'|None (default)].
+"""
+
+factory.defaults['wysihtml5.stylesheet'] = False
+factory.doc['props']['wysihtml5.stylesheet'] = \
+"""Additional stylesheet to inject to the editor.
+Options: widget.
+Values: String of path to the stylesheet or None.
 """
 
 #
