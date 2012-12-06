@@ -80,28 +80,28 @@ factory.defaults['wysihtml5.class'] = 'wysihtml5'
 #
 # Extra options
 
-factory.defaults['wysihtml5.focus'] = False
+factory.defaults['wysihtml5.focus'] = None
 factory.doc['props']['wysihtml5.focus'] = \
 """Set the focus to the editor after loading.
 Options: widget.
-Values: [True|False (default)].
+Values: [True|False|None (default)].
 """
 
-factory.defaults['wysihtml5.resize'] = False
+factory.defaults['wysihtml5.resize'] = None
 factory.doc['props']['wysihtml5.resize'] = \
 """Resize the widget, if content grows out of the textareas display size.
 Options: widget.
-Values: [True|False (default)].
+Values: [True|False|None (default)].
 """
 
-factory.defaults['wysihtml5.size'] = False
+factory.defaults['wysihtml5.size'] = None
 factory.doc['props']['wysihtml5.size'] = \
 """Size of toolbar buttons.
 Options: bootstrap-wysihtml5.
 Values: ['large'|'small'|'mini'|None (default)].
 """
 
-factory.defaults['wysihtml5.stylesheet'] = False
+factory.defaults['wysihtml5.stylesheet'] = None
 factory.doc['props']['wysihtml5.stylesheet'] = \
 """Additional stylesheet to inject to the editor.
 Options: widget.
