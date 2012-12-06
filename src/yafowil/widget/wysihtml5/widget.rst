@@ -59,3 +59,12 @@ Display renderer::
     >>> widget = factory('wysihtml5', 'rt', mode='display')
     >>> widget()
     u'<div class="display-wysihtml5"></div>'
+
+More options::
+
+    >>> widget = factory('wysihtml5', 'rt', props={'required': True,
+    ... 'focus': True, 'resize': True, 'size': 'mini', 'color': True,
+    ... 'emphasis': True, 'font-styles': True, 'html': True, 'image': True,
+    ... 'justify': True, 'link': True, 'lists': True})
+    >>> widget()
+    u'<textarea class="wysihtml5" cols="80" data-color="true" data-emphasis="true" data-focus="true" data-font-styles="true" data-html="true" data-image="true" data-justify="true" data-link="true" data-lists="true" data-resize="true" data-size="mini" id="input-rt" name="rt" required="required" rows="10"></textarea>'
