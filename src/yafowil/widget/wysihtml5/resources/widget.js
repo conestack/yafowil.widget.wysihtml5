@@ -28,8 +28,7 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
 
                 $('textarea.wysihtml5', context).each(function(event) {
 
-                    extra_keys = ['focus', 'resize', 'stylesheet'];
-
+                    var extra_keys = ['focus', 'resize', 'stylesheet'];
                     var elem = $(this);
                     var options = elem.data();
 
@@ -39,7 +38,7 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
                         for (i=0;i<extra_keys.length;i++) {
                             key = extra_keys[i];
                             options_extra[key] = options[key];
-                        delete options[key];
+                            delete options[key];
                         }
                         return options_extra;
                     }
