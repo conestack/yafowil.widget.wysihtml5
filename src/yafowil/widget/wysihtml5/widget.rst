@@ -20,7 +20,13 @@ Render widget::
 
     >>> widget = factory('wysihtml5', 'rt', props={'required': True})
     >>> widget()
-    u'<textarea class="wysihtml5" cols="80" id="input-rt" name="rt" required="required" rows="10"></textarea>'
+    u'<textarea 
+    class="wysihtml5" 
+    cols="80" 
+    id="input-rt" 
+    name="rt" 
+    required="required" 
+    rows="10"></textarea>'
 
 Widget extraction::
 
@@ -48,7 +54,13 @@ Widget extraction. Returns markup from tinymce::
     '<p>1</p>'
 
     >>> widget(data)
-    u'<textarea class="wysihtml5" cols="80" id="input-rt" name="rt" required="required" rows="10"><p>1</p></textarea>'
+    u'<textarea 
+    class="wysihtml5" 
+    cols="80" 
+    id="input-rt" 
+    name="rt" 
+    required="required" 
+    rows="10"><p>1</p></textarea>'
 
 Display renderer::
 
@@ -67,4 +79,21 @@ More options::
     ... 'emphasis': True, 'font-styles': True, 'html': True, 'image': True,
     ... 'justify': True, 'link': True, 'lists': True})
     >>> widget()
-    u'<textarea class="wysihtml5" cols="80" data-color="true" data-emphasis="true" data-focus="true" data-font-styles="true" data-html="true" data-image="true" data-justify="true" data-link="true" data-lists="true" data-resize="true" data-size="mini" id="input-rt" name="rt" required="required" rows="10"></textarea>'
+    u'<textarea 
+    class="wysihtml5" 
+    cols="80" 
+    data-color=\'true\' 
+    data-emphasis=\'true\' 
+    data-focus=\'true\' 
+    data-font-styles=\'true\' 
+    data-html=\'true\' 
+    data-image=\'true\' 
+    data-justify=\'true\' 
+    data-link=\'true\' 
+    data-lists=\'true\' 
+    data-resize=\'true\' 
+    data-size=\'mini\' 
+    id="input-rt" 
+    name="rt" 
+    required="required" 
+    rows="10"></textarea>'
