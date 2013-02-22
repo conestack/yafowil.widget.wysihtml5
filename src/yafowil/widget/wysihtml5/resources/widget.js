@@ -28,7 +28,7 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
 
                 $('textarea.wysihtml5', context).each(function(event) {
 
-                    var extra_keys = ['focus', 'resize', 'stylesheet'];
+                    var extra_keys = ['focus', 'resize', 'stylesheets'];
                     var elem = $(this);
                     var options = elem.data();
 
@@ -47,7 +47,16 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
                     // options processing
                     $.fn.wysihtml5.defaultOptions.stylesheets = []; // reset stylesheets in defaultOptions to overwrite the default one.
                     options.stylesheets = [];
-                    if (options_extra.stylesheet !== undefined) { options.stylesheets.push(options_extra.stylesheet); }
+                    if (options_extra.stylesheets !== undefined) {
+                        if (typeof options_extra.stylesheets === 'string') {
+                            // In case of string
+                            options.stylesheets.push(options_extra.stylesheets);
+                        } else {
+                            // Else case must be a list, but we're not
+                            // explicitly checking it.
+                            options.stylesheets = options_extra.stylesheets;
+                        }
+                    }
                     options.stylesheets.push('/++resource++yafowil.widget.wysihtml5/widget.css');
                     if (options.color===true) {
                         options.stylesheets.push('/++resource++yafowil.widget.wysihtml5/bootstrap-wysihtml5/lib/css/wysiwyg-color.css');

@@ -5,6 +5,10 @@ History
 1.1dev (unreleased)
 -------------------
 
+- Replace stylesheet options with stylesheets and allow a string as path as
+  well as a list of paths to stylesheets to include in wysihtml5 configuration.
+  [thet]
+
 - Add configuration options to control the toolbar (font-styles, color,
   emphasis, lists, html, link, image plus extra justify toolbar buttons) as
   well as additional extra configuration options (toolbar size, focus after

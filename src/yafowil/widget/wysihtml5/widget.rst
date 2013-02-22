@@ -77,7 +77,8 @@ More options::
     >>> widget = factory('wysihtml5', 'rt', props={'required': True,
     ... 'focus': True, 'resize': True, 'size': 'mini', 'color': True,
     ... 'emphasis': True, 'font-styles': True, 'html': True, 'image': True,
-    ... 'justify': True, 'link': True, 'lists': True})
+    ... 'justify': True, 'link': True, 'lists': True,
+    ... 'stylesheets': ['style1', 'style2']})
     >>> widget()
     u'<textarea 
     class="wysihtml5" 
@@ -93,6 +94,7 @@ More options::
     data-lists=\'true\' 
     data-resize=\'true\' 
     data-size=\'mini\' 
+    data-stylesheets=\'["style1", "style2"]\' 
     id="input-rt" 
     name="rt" 
     required="required" 

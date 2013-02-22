@@ -42,7 +42,6 @@ def get_example():
         'link': True,
         'lists': True,
     })
-
     return [{'widget': ex1,
             'doc': DOC_WYSIHTML5,
             'title': 'wysihtml5 Field'}]
