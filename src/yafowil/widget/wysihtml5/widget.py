@@ -33,7 +33,7 @@ wysihtml5_options = [
 @managedprops(*wysihtml5_options)
 def wysihtml5_textarea_renderer(widget, data):
     custom_attrs = data_attrs_helper(widget, data, wysihtml5_options)
-    return textarea_renderer(widget, data, **custom_attrs)
+    return textarea_renderer(widget, data, custom_attrs=custom_attrs)
 
 def wysihtml5_display_renderer(widget, data):
     value = fetch_value(widget, data)
