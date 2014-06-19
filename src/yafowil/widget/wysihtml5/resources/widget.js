@@ -114,5 +114,4 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
         }
     });
 
-
 })(jQuery);

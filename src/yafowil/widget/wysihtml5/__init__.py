@@ -23,12 +23,11 @@ css = [{
 }, {
     'group': 'yafowil.widget.wysihtml5.dependencies',
     'resource': 'bootstrap-wysihtml5/lib/css/wysiwyg-color.css',
-    'order': 21,
-
+    'order': 22,
 }, {
     'group': 'yafowil.widget.wysihtml5.common',
     'resource': 'widget.css',
-    'order': 22,
+    'order': 23,
 }]
 
 
