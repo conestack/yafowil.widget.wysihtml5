@@ -15,11 +15,11 @@ from yafowil.utils import (
 
 wysihtml5_options = [
     # extra options
-    'focus',
-    'resize',
+#    'focus',
+#    'resize',
     'size',
-    'stylesheets',
-    # toolbar options
+#    'stylesheets',
+    # Toolbar Options
     'color',
     'emphasis',
     'font-styles',
@@ -30,10 +30,12 @@ wysihtml5_options = [
     'lists',
 ]
 
+
 @managedprops(*wysihtml5_options)
 def wysihtml5_textarea_renderer(widget, data):
     custom_attrs = data_attrs_helper(widget, data, wysihtml5_options)
     return textarea_renderer(widget, data, custom_attrs=custom_attrs)
+
 
 def wysihtml5_display_renderer(widget, data):
     value = fetch_value(widget, data)
@@ -80,33 +82,33 @@ factory.defaults['wysihtml5.class'] = 'wysihtml5'
 #
 # Extra options
 
-factory.defaults['wysihtml5.focus'] = None
-factory.doc['props']['wysihtml5.focus'] = \
-"""Set the focus to the editor after loading.
-Options: widget.
-Values: [True|False|None (default)].
-"""
+#factory.defaults['wysihtml5.focus'] = None
+#factory.doc['props']['wysihtml5.focus'] = \
+#"""Set the focus to the editor after loading.
+#Options: widget.
+#Values: [True|False|None (default)].
+#"""
 
-factory.defaults['wysihtml5.resize'] = None
-factory.doc['props']['wysihtml5.resize'] = \
-"""Resize the widget, if content grows out of the textareas display size.
-Options: widget.
-Values: [True|False|None (default)].
-"""
+#factory.defaults['wysihtml5.resize'] = None
+#factory.doc['props']['wysihtml5.resize'] = \
+#"""Resize the widget, if content grows out of the textareas display size.
+#Options: widget.
+#Values: [True|False|None (default)].
+#"""
 
 factory.defaults['wysihtml5.size'] = None
 factory.doc['props']['wysihtml5.size'] = \
 """Size of toolbar buttons.
 Options: bootstrap-wysihtml5.
-Values: ['large'|'small'|'mini'|None (default)].
+Values: ['lg'|'sm'|'sx'|None (default)].
 """
 
-factory.defaults['wysihtml5.stylesheets'] = None
-factory.doc['props']['wysihtml5.stylesheets'] = \
-"""Additional stylesheets to inject to the editor.
-Options: widget.
-Values: Stylesheet or list of stylesheets or None.
-"""
+#factory.defaults['wysihtml5.stylesheets'] = None
+#factory.doc['props']['wysihtml5.stylesheets'] = \
+#"""Additional stylesheets to inject to the editor.
+#Options: widget.
+#Values: Stylesheet or list of stylesheets or None.
+#"""
 
 #
 # Toolbar Options
