@@ -2,8 +2,8 @@
 History
 =======
 
-1.1dev (unreleased)
--------------------
+1.1
+---
 
 - Replace stylesheet options with stylesheets and allow a string as path as
   well as a list of paths to stylesheets to include in wysihtml5 configuration.
