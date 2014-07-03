@@ -1,19 +1,10 @@
-iframe.wysihtml5-sandbox {
-    width:98% !important;
-    height:30em !important;
+.wysihtml5-toolbar .btn-default {
+    background-image:none;
 }
-.wysihtml5-toolbar .btn {
-	height:18px;
+.wysihtml5-toolbar li > a > i,
+.wysihtml5-toolbar .btn-group > a > i {
+    line-height:1.5;
 }
-.wysihtml5-toolbar .btn i {
-	margin-top:2px;
-}
-.wysiwyg-text-align-left {
-    text-align: left;
-}
-.wysiwyg-text-align-center {
-    text-align: center;
-}
-.wysiwyg-text-align-right {
-    text-align: right;
+.wysihtml5-toolbar li.dropdown > a > i {
+    line-height:1;
 }
