@@ -2,8 +2,16 @@
 History
 =======
 
-1.1dev (unreleased)
--------------------
+1.2.dev0
+--------
+
+- Refactor to bootstrap 3 integrating
+  ``https://github.com/schnawel007/bootstrap3-wysihtml5``.
+  [rnix, 2014-07-03]
+
+
+1.1
+---
 
 - Replace stylesheet options with stylesheets and allow a string as path as
   well as a list of paths to stylesheets to include in wysihtml5 configuration.

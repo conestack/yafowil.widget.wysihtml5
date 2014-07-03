@@ -8516,8 +8516,6 @@ wysihtml5.views.View = Base.extend(
       var dataTransfer = event.dataTransfer,
           data;
 
-
-      console.log('PASTED', event);
       if (dataTransfer && browser.supportsDataTransfer()) {
         data = dataTransfer.getData("text/html") || dataTransfer.getData("text/plain");
       }
