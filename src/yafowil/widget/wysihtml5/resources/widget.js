@@ -25,12 +25,14 @@ if (typeof(window.yafowil) == "undefined") yafowil = {};
         wysihtml5: {
 
             binder: function(context) {
-
+                var resource_base = '/++resource++yafowil.widget.wysihtml5';
+                var color_css = resource_base
+                              + '/bootstrap3-wysihtml5/wysiwyg-color.css';
                 $('textarea.wysihtml5', context).each(function(event) {
                     var elem = $(this);
-                    elem.wysihtml5(); // options are taken from data attributes
+                    // most options are taken from data attributes
+                    elem.wysihtml5({stylesheets: [color_css]});
                 });
-
             }
         }
     });
