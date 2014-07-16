@@ -21,6 +21,10 @@ css = [{
     'resource': 'bootstrap3-wysihtml5/bootstrap-wysihtml5.css',
     'order': 21,
 }, {
+    'group': 'yafowil.widget.wysihtml5.dependencies',
+    'resource': 'bootstrap3-wysihtml5/wysiwyg-color.css',
+    'order': 21,
+}, {
     'group': 'yafowil.widget.wysihtml5.common',
     'resource': 'widget.css',
     'order': 22,
