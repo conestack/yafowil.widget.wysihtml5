@@ -13,7 +13,7 @@ Richtext widget using bootstrap-wysihtml5.
         'label': 'wysihtml5 Field',
         'focus': True,
         'resize': True,
-        'size': 'mini',
+        'size': 'sm',
         'color': True,
         'emphasis': True,
         'font-styles': True,
@@ -23,7 +23,6 @@ Richtext widget using bootstrap-wysihtml5.
         'link': True,
         'lists': True,
     })
-
 """
 
 def get_example():
@@ -31,7 +30,7 @@ def get_example():
     ex1['text'] = factory('#field:wysihtml5', props={
         'label': 'wysihtml5 Field',
         'focus': True,
-        'size': 'mini',
+        'size': 'sm',
         'resize': True,
         'color': True,
         'emphasis': True,
@@ -42,6 +41,8 @@ def get_example():
         'link': True,
         'lists': True,
     })
-    return [{'widget': ex1,
-            'doc': DOC_WYSIHTML5,
-            'title': 'wysihtml5 Field'}]
+    return [{
+        'widget': ex1,
+        'doc': DOC_WYSIHTML5,
+        'title': 'wysihtml5 Field',
+    }]
