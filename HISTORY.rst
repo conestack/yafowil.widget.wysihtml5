@@ -2,8 +2,8 @@
 History
 =======
 
-1.2.dev0
---------
+1.2 (Unreleased)
+----------------
 
 - Refactor to bootstrap 3 integrating
   ``https://github.com/schnawel007/bootstrap3-wysihtml5``.
