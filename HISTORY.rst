@@ -2,7 +2,7 @@
 History
 =======
 
-1.2 (Unreleased)
+1.2 (2015-01-23)
 ----------------
 
 - Refactor to bootstrap 3 integrating
