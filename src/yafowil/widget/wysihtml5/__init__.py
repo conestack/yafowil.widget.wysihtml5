@@ -1,4 +1,5 @@
 from yafowil.base import factory
+from yafowil.utils import entry_point
 import os
 
 
@@ -31,6 +32,7 @@ css = [{
 }]
 
 
+@entry_point(order=10)
 def register():
     import widget
     factory.register_theme('default', 'yafowil.widget.wysihtml5',
