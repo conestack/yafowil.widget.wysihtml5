@@ -1,30 +1,101 @@
-from interlude import interact
-from pprint import pprint
-from yafowil.tests import pxml
-import doctest
-import unittest
+from node.tests import NodeTestCase
+from node.utils import UNSET
+from yafowil.base import ExtractionError
+from yafowil.base import factory
+from yafowil.tests import fxml
+import yafowil.widget.wysihtml5
+import yafowil.loader
 
 
-optionflags = doctest.NORMALIZE_WHITESPACE | \
-              doctest.ELLIPSIS | \
-              doctest.REPORT_ONLY_FIRST_FAILURE
+class TestWysihtml5Widget(NodeTestCase):
 
-TESTFILES = [
-    'widget.rst',
-]
+    def test_renderer(self):
+        # Render widget
+        widget = factory(
+            'wysihtml5',
+            name='wysihtml5',
+            props={
+                'required': True
+            })
+        self.assertEqual(widget(), (
+            '<textarea class="wysihtml5" cols="80" id="input-wysihtml5" '
+            'name="wysihtml5" required="required" rows="10"></textarea>'
+        ))
 
+    def test_extraction(self):
+        # Widget extraction
+        widget = factory(
+            'wysihtml5',
+            name='wysihtml5',
+            props={
+                'required': True
+            })
+        # No input was given
+        request = {'wysihtml5': ''}
+        data = widget.extract(request)
+        self.assertEqual(data.errors,
+            [ExtractionError('Mandatory field was empty')]
+        )
+        # Empty string in extracted
+        self.assertEqual(data.extracted, '')
+        # Widget extraction. Returns markup from tinymce
+        request = {'wysihtml5': '<p>1</p>'}
+        data = widget.extract(request)
+        self.assertEqual(data.errors, [])
+        self.assertEqual(data.extracted, '<p>1</p>')
+        self.assertEqual(widget(data), (
+            '<textarea class="wysihtml5" cols="80" id="input-wysihtml5" '
+            'name="wysihtml5" required="required" rows="10"><p>1</p></textarea>'
+        ))
 
-def test_suite():
-    return unittest.TestSuite([
-        doctest.DocFileSuite(
-            file,
-            optionflags=optionflags,
-            globs={'interact': interact,
-                   'pprint': pprint,
-                   'pxml': pxml},
-        ) for file in TESTFILES
-    ])
+    def test_display_renderer(self):
+        # Display renderer
+        widget = factory(
+            'wysihtml5',
+            name='wysihtml5',
+            value='<p>foo</p>',
+            mode='display')
+        self.assertEqual(widget(),
+            '<div class="display-wysihtml5"><p>foo</p></div>'
+        )
+
+        widget = factory(
+            'wysihtml5',
+            name='wysihtml5',
+            mode='display')
+        self.assertEqual(widget(),
+            '<div class="display-wysihtml5"></div>'
+        )
+
+    def test_wysihtml5_options(self):
+        # More options
+        widget = factory(
+            'wysihtml5',
+            name='wysihtml5',
+            props={
+                'required': True,
+                'focus': True,
+                'resize': True,
+                'size': 'xs',
+                'color': True,
+                'emphasis': True,
+                'font-styles': True,
+                'html': True,
+                'image': True,
+                'justify': True,
+                'link': True,
+                'lists': True,
+                'stylesheets': ['style1', 'style2']
+            })
+        self.assertEqual(widget(), (
+            '<textarea class="wysihtml5" cols="80" data-color=\'true\' '
+            'data-emphasis=\'true\' data-font-styles=\'true\' '
+            'data-html=\'true\' data-image=\'true\' data-justify=\'true\' '
+            'data-link=\'true\' data-lists=\'true\' data-size=\'xs\' '
+            'id="input-wysihtml5" name="wysihtml5" required="required" '
+            'rows="10"></textarea>'
+        ))
 
 
 if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')                 #pragma NO COVER
+    unittest.main()                                          # pragma: no cover
