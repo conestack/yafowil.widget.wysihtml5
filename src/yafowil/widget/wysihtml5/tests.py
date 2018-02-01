@@ -1,13 +1,17 @@
-from node.tests import NodeTestCase
 from node.utils import UNSET
 from yafowil.base import ExtractionError
 from yafowil.base import factory
+from yafowil.tests import YafowilTestCase
 from yafowil.tests import fxml
-import yafowil.widget.wysihtml5
 import yafowil.loader
 
 
-class TestWysihtml5Widget(NodeTestCase):
+class TestWysihtml5Widget(YafowilTestCase):
+
+    def setUp(self):
+        super(TestWysihtml5Widget, self).setUp()
+        from yafowil.widget.wysihtml5 import widget
+        reload(widget)
 
     def test_renderer(self):
         # Render widget
