@@ -34,6 +34,6 @@ css = [{
 
 @entry_point(order=10)
 def register():
-    import widget
+    from yafowil.widget.wysihtml5 import widget
     factory.register_theme('default', 'yafowil.widget.wysihtml5',
                            resourcedir, js=js, css=css)
