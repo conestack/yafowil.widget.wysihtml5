@@ -3,7 +3,7 @@ from setuptools import setup
 import os
 
 
-version = '1.4.dev0'
+version = '1.4'
 shortdesc = 'wysihtml5 richtext widget for YAFOWIL with bootstrap integration'
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'HISTORY.rst')).read()
