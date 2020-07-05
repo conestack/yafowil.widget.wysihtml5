@@ -1,10 +1,9 @@
-from node.utils import UNSET
 from yafowil.base import ExtractionError
 from yafowil.base import factory
 from yafowil.compat import IS_PY2
 from yafowil.tests import YafowilTestCase
-from yafowil.tests import fxml
-import yafowil.loader
+import unittest
+import yafowil.loader  # noqa
 
 
 if not IS_PY2:
@@ -42,7 +41,8 @@ class TestWysihtml5Widget(YafowilTestCase):
         # No input was given
         request = {'wysihtml5': ''}
         data = widget.extract(request)
-        self.assertEqual(data.errors,
+        self.assertEqual(
+            data.errors,
             [ExtractionError('Mandatory field was empty')]
         )
         # Empty string in extracted
@@ -64,7 +64,8 @@ class TestWysihtml5Widget(YafowilTestCase):
             name='wysihtml5',
             value='<p>foo</p>',
             mode='display')
-        self.assertEqual(widget(),
+        self.assertEqual(
+            widget(),
             '<div class="display-wysihtml5"><p>foo</p></div>'
         )
 
@@ -72,7 +73,8 @@ class TestWysihtml5Widget(YafowilTestCase):
             'wysihtml5',
             name='wysihtml5',
             mode='display')
-        self.assertEqual(widget(),
+        self.assertEqual(
+            widget(),
             '<div class="display-wysihtml5"></div>'
         )
 
@@ -107,4 +109,4 @@ class TestWysihtml5Widget(YafowilTestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()                                          # pragma: no cover
+    unittest.main()

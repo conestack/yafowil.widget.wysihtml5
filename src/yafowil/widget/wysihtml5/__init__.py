@@ -34,6 +34,6 @@ css = [{
 
 @entry_point(order=10)
 def register():
-    from yafowil.widget.wysihtml5 import widget
+    from yafowil.widget.wysihtml5 import widget  # noqa
     factory.register_theme('default', 'yafowil.widget.wysihtml5',
                            resourcedir, js=js, css=css)

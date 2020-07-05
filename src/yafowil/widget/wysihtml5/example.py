@@ -25,6 +25,7 @@ Richtext widget using bootstrap-wysihtml5.
     })
 """
 
+
 def get_example():
     ex1 = factory(u'fieldset', name='yafowil_wysihtml5')
     ex1['text'] = factory('#field:wysihtml5', props={
