@@ -47,7 +47,7 @@ factory.register(
 
 factory.doc['blueprint']['wysihtml5'] = """\
 Add-on blueprint `yafowil.widget.wysihtml5
-<http://github.com/bluedynamics/yafowil.widget.wysihtml5/>`_ .
+<http://github.com/conestack/yafowil.widget.wysihtml5/>`_ .
 """
 
 factory.defaults['wysihtml5.default'] = ''
