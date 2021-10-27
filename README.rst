@@ -7,11 +7,14 @@ editor with optionally `bootstrap-wysihtml5 <https://github.com/jhollingworth/bo
 - `Documentation <http://docs.yafowil.info/en/latest/blueprints.html#wysihtml5>`_
 - `DEMO - see it Live <http://demo.yafowil.info/++widget++yafowil.widget.wysihtml5/index.html>`_
 
+
 Note
 ====
+
 For the Bootstrap integration, you will need yafowil.bootstrap or another
 Twitter-Bootstrap integration. This packages does not register the Bootstrap
 base files.
+
 
 Source Code
 ===========
