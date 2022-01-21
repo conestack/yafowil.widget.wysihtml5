@@ -11,5 +11,5 @@
 	window.yafowil.wysihtml5 = exports;
 
 
-}());
+})();
 //# sourceMappingURL=yafowil.widget.wysihtml5.js.map
