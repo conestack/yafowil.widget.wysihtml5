@@ -1,10 +1,11 @@
 Changes
 =======
 
-1.5 (unreleased)
+2.0 (unreleased)
 ----------------
 
-- No changes yet.
+- Rewrite JavaScript using ES6.
+  [lenadax]
 
 
 1.4 (2018-07-16)

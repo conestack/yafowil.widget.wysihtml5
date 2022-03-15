@@ -8,7 +8,7 @@ def read_file(name):
         return f.read()
 
 
-version = '1.5.dev0'
+version = '2.0.dev0'
 shortdesc = 'wysihtml5 richtext widget for YAFOWIL with bootstrap integration'
 longdesc = '\n\n'.join([read_file(name) for name in [
     'README.rst',
