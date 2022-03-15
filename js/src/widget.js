@@ -1,40 +1,19 @@
-/*
- * yafowil wysihtml5 widget
- *
- * Optional: bdajax
- */
+import $ from 'jquery';
 
-if (typeof(window.yafowil) == "undefined") yafowil = {};
+export class WysiHTML5Widget {
 
-(function($) {
+    static initialize(context) {
+        let resource_base = '/++resource++yafowil.widget.wysihtml5';
+        let color_css = resource_base
+            + '/bootstrap3-wysihtml5/wysiwyg-color.css';
 
-    $(document).ready(function() {
-        // initial binding
-        yafowil.wysihtml5.binder();
+        $('textarea.wysihtml5', context).each(function() {
+            new WysiHTML5Widget($(this), color_css);
+        });
+    }
 
-        // add after ajax binding if bdajax present
-        if (typeof(window.bdajax) != "undefined") {
-            $.extend(bdajax.binders, {
-                wysihtml5_binder: yafowil.wysihtml5.binder
-            });
-        }
-    });
-
-    $.extend(yafowil, {
-
-        wysihtml5: {
-
-            binder: function(context) {
-                var resource_base = '/++resource++yafowil.widget.wysihtml5';
-                var color_css = resource_base
-                              + '/bootstrap3-wysihtml5/wysiwyg-color.css';
-                $('textarea.wysihtml5', context).each(function(event) {
-                    var elem = $(this);
-                    // most options are taken from data attributes
-                    elem.wysihtml5({stylesheets: [color_css]});
-                });
-            }
-        }
-    });
-
-})(jQuery);
+    constructor(elem, color_css) {
+        this.elem = elem;
+        this.elem.wysihtml5({stylesheets: [color_css]});
+    }
+}

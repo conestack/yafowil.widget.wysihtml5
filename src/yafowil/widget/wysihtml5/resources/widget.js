@@ -1,40 +1,41 @@
-/*
- * yafowil wysihtml5 widget
- *
- * Optional: bdajax
- */
+var yafowil_wysihtml5 = (function (exports, $) {
+    'use strict';
 
-if (typeof(window.yafowil) == "undefined") yafowil = {};
-
-(function($) {
-
-    $(document).ready(function() {
-        // initial binding
-        yafowil.wysihtml5.binder();
-
-        // add after ajax binding if bdajax present
-        if (typeof(window.bdajax) != "undefined") {
-            $.extend(bdajax.binders, {
-                wysihtml5_binder: yafowil.wysihtml5.binder
+    class WysiHTML5Widget {
+        static initialize(context) {
+            let resource_base = '/++resource++yafowil.widget.wysihtml5';
+            let color_css = resource_base
+                + '/bootstrap3-wysihtml5/wysiwyg-color.css';
+            $('textarea.wysihtml5', context).each(function() {
+                new WysiHTML5Widget($(this), color_css);
             });
         }
-    });
+        constructor(elem, color_css) {
+            this.elem = elem;
+            this.elem.wysihtml5({stylesheets: [color_css]});
+        }
+    }
 
-    $.extend(yafowil, {
-
-        wysihtml5: {
-
-            binder: function(context) {
-                var resource_base = '/++resource++yafowil.widget.wysihtml5';
-                var color_css = resource_base
-                              + '/bootstrap3-wysihtml5/wysiwyg-color.css';
-                $('textarea.wysihtml5', context).each(function(event) {
-                    var elem = $(this);
-                    // most options are taken from data attributes
-                    elem.wysihtml5({stylesheets: [color_css]});
-                });
-            }
+    $(function() {
+        if (window.ts !== undefined) {
+            ts.ajax.register(WysiHTML5Widget.initialize, true);
+        } else {
+            WysiHTML5Widget.initialize();
         }
     });
 
-})(jQuery);
+    exports.WysiHTML5Widget = WysiHTML5Widget;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+
+    if (window.yafowil === undefined) {
+        window.yafowil = {};
+    }
+
+    window.yafowil.wysihtml5 = exports;
+
+
+    return exports;
+
+})({}, jQuery);
