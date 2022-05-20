@@ -4,10 +4,7 @@ import {terser} from 'rollup-plugin-terser';
 const out_dir = 'src/yafowil/widget/wysihtml5/resources';
 
 const outro = `
-if (window.yafowil === undefined) {
-    window.yafowil = {};
-}
-
+window.yafowil = window.yafowil || {};
 window.yafowil.wysihtml5 = exports;
 `;
 
