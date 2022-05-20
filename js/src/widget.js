@@ -13,6 +13,7 @@ export class WysiHTML5Widget {
     }
 
     constructor(elem, color_css) {
+        elem.data('yafowil-wysihtml5', this);
         this.elem = elem;
         this.elem.wysihtml5({stylesheets: [color_css]});
     }
