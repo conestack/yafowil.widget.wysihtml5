@@ -1,9 +1,67 @@
 from yafowil.base import factory
 from yafowil.utils import entry_point
 import os
+import webresource as wr
 
 
-resourcedir = os.path.join(os.path.dirname(__file__), 'resources')
+resources_dir = os.path.join(os.path.dirname(__file__), 'resources')
+
+
+##############################################################################
+# Default
+##############################################################################
+
+# webresource ################################################################
+
+scripts = wr.ResourceGroup(name='scripts')
+scripts.add(wr.ScriptResource(
+    name='wysihtml5-js',
+    # actually it not depends on jquery, but yafowil-wysihtml5-js does
+    # think about multiple depends values in webresource
+    depends='jquery-js',
+    directory=os.path.join(resources_dir, 'wysihtml5'),
+    resource='wysihtml5-0.3.0.js',
+    compressed='wysihtml5-0.3.0.min.js'
+))
+scripts.add(wr.ScriptResource(
+    name='wysihtml5-bootstrap3-js',
+    depends='wysihtml5-js',
+    directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
+    resource='bootstrap3-wysihtml5.js',
+    compressed='wysihtml5-0.3.0.min.js'
+))
+scripts.add(wr.ScriptResource(
+    name='yafowil-wysihtml5-js',
+    depends='wysihtml5-bootstrap3-js',
+    directory=resources_dir,
+    resource='widget.js',
+    compressed='wisget.min.js'
+))
+
+styles = wr.ResourceGroup(name='styles')
+styles.add(wr.StyleResource(
+    name='wysihtml5-bootstrap3-css',
+    directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
+    resource='bootstrap-wysihtml5.css'
+))
+styles.add(wr.StyleResource(
+    name='wysihtml5-bootstrap3-color-css',
+    depends='wysihtml5-bootstrap3-css',
+    directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
+    resource='wysiwyg-color.css'
+))
+styles.add(wr.StyleResource(
+    name='yafowil-wysihtml5-css',
+    directory=resources_dir,
+    resource='widget.css'
+))
+
+resources = wr.ResourceGroup(name='wysihtml5-resources')
+resources.add(scripts)
+resources.add(styles)
+
+# B/C resources ##############################################################
+
 js = [{
     'group': 'yafowil.widget.wysihtml5.dependencies',
     'resource': 'wysihtml5/wysihtml5-0.3.0.js',
@@ -32,8 +90,16 @@ css = [{
 }]
 
 
+##############################################################################
+# Registration
+##############################################################################
+
 @entry_point(order=10)
 def register():
     from yafowil.widget.wysihtml5 import widget  # noqa
-    factory.register_theme('default', 'yafowil.widget.wysihtml5',
-                           resourcedir, js=js, css=css)
+
+    # Default
+    factory.register_theme(
+        'default', 'yafowil.widget.wysihtml5', resources_dir,
+        js=js, css=css, resources=resources
+    )
