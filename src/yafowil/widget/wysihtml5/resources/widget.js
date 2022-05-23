@@ -11,6 +11,7 @@ var yafowil_wysihtml5 = (function (exports, $) {
             });
         }
         constructor(elem, color_css) {
+            elem.data('yafowil-wysihtml5', this);
             this.elem = elem;
             this.elem.wysihtml5({stylesheets: [color_css]});
         }
@@ -19,6 +20,8 @@ var yafowil_wysihtml5 = (function (exports, $) {
     $(function() {
         if (window.ts !== undefined) {
             ts.ajax.register(WysiHTML5Widget.initialize, true);
+        } else if (window.bdajax !== undefined) {
+            bdajax.register(WysiHTML5Widget.initialize, true);
         } else {
             WysiHTML5Widget.initialize();
         }
@@ -29,10 +32,7 @@ var yafowil_wysihtml5 = (function (exports, $) {
     Object.defineProperty(exports, '__esModule', { value: true });
 
 
-    if (window.yafowil === undefined) {
-        window.yafowil = {};
-    }
-
+    window.yafowil = window.yafowil || {};
     window.yafowil.wysihtml5 = exports;
 
 
