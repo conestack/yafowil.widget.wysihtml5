@@ -13,19 +13,16 @@ resources_dir = os.path.join(os.path.dirname(__file__), 'resources')
 
 # webresource ################################################################
 
-scripts = wr.ResourceGroup(name='scripts')
+scripts = wr.ResourceGroup(name='yafowil-wysihtml5-scripts')
 scripts.add(wr.ScriptResource(
     name='wysihtml5-js',
-    # actually it not depends on jquery, but yafowil-wysihtml5-js does
-    # think about multiple depends values in webresource
-    depends='jquery-js',
     directory=os.path.join(resources_dir, 'wysihtml5'),
     resource='wysihtml5-0.3.0.js',
     compressed='wysihtml5-0.3.0.min.js'
 ))
 scripts.add(wr.ScriptResource(
     name='wysihtml5-bootstrap3-js',
-    depends='wysihtml5-js',
+    depends=['jquery-js', 'wysihtml5-js'],
     directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
     resource='bootstrap3-wysihtml5.js',
     compressed='wysihtml5-0.3.0.min.js'
@@ -38,7 +35,7 @@ scripts.add(wr.ScriptResource(
     compressed='wisget.min.js'
 ))
 
-styles = wr.ResourceGroup(name='styles')
+styles = wr.ResourceGroup(name='yafowil-wysihtml5-styles')
 styles.add(wr.StyleResource(
     name='wysihtml5-bootstrap3-css',
     directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
@@ -55,10 +52,6 @@ styles.add(wr.StyleResource(
     directory=resources_dir,
     resource='widget.css'
 ))
-
-resources = wr.ResourceGroup(name='wysihtml5-resources')
-resources.add(scripts)
-resources.add(styles)
 
 # B/C resources ##############################################################
 
@@ -101,5 +94,7 @@ def register():
     # Default
     factory.register_theme(
         'default', 'yafowil.widget.wysihtml5', resources_dir,
-        js=js, css=css, resources=resources
+        js=js, css=css
     )
+    factory.register_scripts('default', 'yafowil.widget.wysihtml5', scripts)
+    factory.register_styles('default', 'yafowil.widget.wysihtml5', styles)
