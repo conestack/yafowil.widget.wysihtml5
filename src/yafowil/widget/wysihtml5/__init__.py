@@ -13,7 +13,10 @@ resources_dir = os.path.join(os.path.dirname(__file__), 'resources')
 
 # webresource ################################################################
 
-scripts = wr.ResourceGroup(name='yafowil-wysihtml5-scripts')
+scripts = wr.ResourceGroup(
+    name='yafowil-wysihtml5-scripts',
+    path='yafowil.widget.wysihtml5'
+)
 scripts.add(wr.ScriptResource(
     name='wysihtml5-js',
     directory=os.path.join(resources_dir, 'wysihtml5'),
@@ -35,7 +38,10 @@ scripts.add(wr.ScriptResource(
     compressed='wisget.min.js'
 ))
 
-styles = wr.ResourceGroup(name='yafowil-wysihtml5-styles')
+styles = wr.ResourceGroup(
+    name='yafowil-wysihtml5-styles',
+    path='yafowil.widget.wysihtml5'
+)
 styles.add(wr.StyleResource(
     name='wysihtml5-bootstrap3-css',
     directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
