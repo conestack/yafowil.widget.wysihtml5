@@ -13,49 +13,47 @@ resources_dir = os.path.join(os.path.dirname(__file__), 'resources')
 
 # webresource ################################################################
 
-scripts = wr.ResourceGroup(
-    name='yafowil-wysihtml5-scripts',
-    path='yafowil.widget.wysihtml5'
+resources = wr.ResourceGroup(
+    name='yafowil-wysihtml5-resources',
+    directory=resources_dir,
+    path='yafowil-wysihtml5'
 )
-scripts.add(wr.ScriptResource(
+resources.add(wr.ScriptResource(
     name='wysihtml5-js',
     directory=os.path.join(resources_dir, 'wysihtml5'),
+    path='yafowil-wysihtml5/wysihtml5',
     resource='wysihtml5-0.3.0.js',
     compressed='wysihtml5-0.3.0.min.js'
 ))
-scripts.add(wr.ScriptResource(
+resources.add(wr.ScriptResource(
     name='wysihtml5-bootstrap3-js',
     depends=['jquery-js', 'wysihtml5-js'],
     directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
+    path='yafowil-wysihtml5/bootstrap3-wysihtml5',
     resource='bootstrap3-wysihtml5.js',
     compressed='wysihtml5-0.3.0.min.js'
 ))
-scripts.add(wr.ScriptResource(
+resources.add(wr.ScriptResource(
     name='yafowil-wysihtml5-js',
     depends='wysihtml5-bootstrap3-js',
-    directory=resources_dir,
     resource='widget.js',
     compressed='wisget.min.js'
 ))
-
-styles = wr.ResourceGroup(
-    name='yafowil-wysihtml5-styles',
-    path='yafowil.widget.wysihtml5'
-)
-styles.add(wr.StyleResource(
+resources.add(wr.StyleResource(
     name='wysihtml5-bootstrap3-css',
     directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
+    path='yafowil-wysihtml5/bootstrap3-wysihtml5',
     resource='bootstrap-wysihtml5.css'
 ))
-styles.add(wr.StyleResource(
+resources.add(wr.StyleResource(
     name='wysihtml5-bootstrap3-color-css',
     depends='wysihtml5-bootstrap3-css',
     directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
+    path='yafowil-wysihtml5/bootstrap3-wysihtml5',
     resource='wysiwyg-color.css'
 ))
-styles.add(wr.StyleResource(
+resources.add(wr.StyleResource(
     name='yafowil-wysihtml5-css',
-    directory=resources_dir,
     resource='widget.css'
 ))
 
@@ -97,10 +95,14 @@ css = [{
 def register():
     from yafowil.widget.wysihtml5 import widget  # noqa
 
+    widget_name = 'yafowil.widget.wysihtml5'
+
     # Default
     factory.register_theme(
-        'default', 'yafowil.widget.wysihtml5', resources_dir,
-        js=js, css=css
+        'default',
+        widget_name,
+        resources_dir,
+        js=js,
+        css=css
     )
-    factory.register_scripts('default', 'yafowil.widget.wysihtml5', scripts)
-    factory.register_styles('default', 'yafowil.widget.wysihtml5', styles)
+    factory.register_resources('default', widget_name, resources)
