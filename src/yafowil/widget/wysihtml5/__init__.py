@@ -30,14 +30,13 @@ resources.add(wr.ScriptResource(
     depends=['jquery-js', 'wysihtml5-js'],
     directory=os.path.join(resources_dir, 'bootstrap3-wysihtml5'),
     path='yafowil-wysihtml5/bootstrap3-wysihtml5',
-    resource='bootstrap3-wysihtml5.js',
-    compressed='wysihtml5-0.3.0.min.js'
+    resource='bootstrap3-wysihtml5.js'
 ))
 resources.add(wr.ScriptResource(
     name='yafowil-wysihtml5-js',
     depends='wysihtml5-bootstrap3-js',
     resource='widget.js',
-    compressed='wisget.min.js'
+    compressed='widget.min.js'
 ))
 resources.add(wr.StyleResource(
     name='wysihtml5-bootstrap3-css',
