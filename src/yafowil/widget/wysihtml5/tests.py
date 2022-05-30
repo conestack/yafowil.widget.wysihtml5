@@ -19,7 +19,8 @@ class TestWysihtml5Widget(YafowilTestCase):
     def setUp(self):
         super(TestWysihtml5Widget, self).setUp()
         from yafowil.widget import wysihtml5
-        reload(wysihtml5.widget)
+        from yafowil.widget.wysihtml5 import widget
+        reload(widget)
         wysihtml5.register()
 
     def test_renderer(self):
