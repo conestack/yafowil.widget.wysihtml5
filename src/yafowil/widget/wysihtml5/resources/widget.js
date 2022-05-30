@@ -3,9 +3,8 @@ var yafowil_wysihtml5 = (function (exports, $) {
 
     class WysiHTML5Widget {
         static initialize(context) {
-            let resource_base = '/++resource++yafowil.widget.wysihtml5';
-            let color_css = resource_base
-                + '/bootstrap3-wysihtml5/wysiwyg-color.css';
+            let resource_base = '/++resource++yafowil-wysihtml5';
+            let color_css = resource_base + '/bootstrap3-wysihtml5/wysiwyg-color.css';
             $('textarea.wysihtml5', context).each(function() {
                 new WysiHTML5Widget($(this), color_css);
             });
