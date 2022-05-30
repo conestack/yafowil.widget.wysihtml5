@@ -119,6 +119,7 @@ class TestWysihtml5Widget(YafowilTestCase):
         self.assertTrue(resources.directory.endswith(
             np('/wysihtml5/resources')
         ))
+        self.assertEqual(resources.name, 'yafowil.widget.wysihtml5')
         self.assertEqual(resources.path, 'yafowil-wysihtml5')
 
         scripts = resources.scripts

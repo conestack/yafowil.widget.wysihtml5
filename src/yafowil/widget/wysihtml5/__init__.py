@@ -14,7 +14,7 @@ resources_dir = os.path.join(os.path.dirname(__file__), 'resources')
 # webresource ################################################################
 
 resources = wr.ResourceGroup(
-    name='yafowil-wysihtml5-resources',
+    name='yafowil.widget.wysihtml5',
     directory=resources_dir,
     path='yafowil-wysihtml5'
 )
