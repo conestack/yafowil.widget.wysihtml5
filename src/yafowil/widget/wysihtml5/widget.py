@@ -2,7 +2,7 @@ from yafowil.base import factory
 from yafowil.base import fetch_value
 from yafowil.common import generic_extractor
 from yafowil.common import generic_required_extractor
-from yafowil.common import textarea_renderer
+from yafowil.textarea import textarea_renderer
 from yafowil.utils import data_attrs_helper
 from yafowil.utils import managedprops
 
