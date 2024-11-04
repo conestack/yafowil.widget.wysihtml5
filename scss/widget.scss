@@ -1,0 +1,12 @@
+.wysihtml5-toolbar {
+    .btn-default {
+        background-image:none;
+    }
+    li > a > i,
+    .btn-group > a > i {
+        line-height:1.5;
+    }
+    li.dropdown > a > i {
+        line-height:1;
+    }
+}
