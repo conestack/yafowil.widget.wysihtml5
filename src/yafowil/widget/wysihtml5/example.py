@@ -26,6 +26,27 @@ Richtext widget using bootstrap-wysihtml5.
 """
 
 
+DOC_WYSIHTML5_DEPRECATION = """
+.. raw:: html
+
+    <div class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <strong>Deprecation Notice:</strong>
+        yafowil.widget.wysihtml5 is 
+        <strong>
+            deprecated
+        </strong>
+        and will no longer receive support or further development.
+        Please use 
+        <a class="link-offset-3"
+           href="../++widget++yafowil.widget.tiptap/index.html">
+            yafowil.widget.tiptap
+        </a>
+        instead.
+    </div>
+"""
+
+
 def get_example():
     ex1 = factory(u'fieldset', name='yafowil_wysihtml5')
     ex1['text'] = factory('#field:wysihtml5', props={
@@ -44,6 +65,7 @@ def get_example():
     })
     return [{
         'widget': ex1,
-        'doc': DOC_WYSIHTML5,
+        'doc': DOC_WYSIHTML5 if factory.theme != 'bootstrap5'
+               else DOC_WYSIHTML5_DEPRECATION + DOC_WYSIHTML5,
         'title': 'wysihtml5 Field',
     }]
