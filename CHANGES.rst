@@ -1,8 +1,8 @@
 Changes
 =======
 
-2.0 (unreleased)
-----------------
+2.0.0 (unreleased)
+------------------
 
 - Rewrite JavaScript using ES6.
   [lenadax]

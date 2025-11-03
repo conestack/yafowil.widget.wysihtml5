@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "yafowil.widget.wysihtml5"
-version = "2.0.dev0"
+version = "2.0.0.dev0"
 description = "wysihtml5 richtext widget for YAFOWIL with bootstrap integration"
 readme = "README.rst"
 license = {text = "Simplified BSD"}
