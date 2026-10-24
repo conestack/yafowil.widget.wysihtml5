@@ -3,7 +3,6 @@ from yafowil.base import ExtractionError
 from yafowil.base import factory
 from yafowil.tests import YafowilTestCase
 import os
-import unittest
 
 
 def np(path):
@@ -174,7 +173,3 @@ class TestWysihtml5Widget(YafowilTestCase):
         self.assertEqual(styles[2].path, 'yafowil-wysihtml5')
         self.assertEqual(styles[2].file_name, 'widget.css')
         self.assertTrue(os.path.exists(styles[2].file_path))
-
-
-if __name__ == '__main__':
-    unittest.main()
