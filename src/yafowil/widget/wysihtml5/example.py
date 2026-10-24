@@ -48,24 +48,30 @@ DOC_WYSIHTML5_DEPRECATION = """
 
 
 def get_example():
-    ex1 = factory(u'fieldset', name='yafowil_wysihtml5')
-    ex1['text'] = factory('#field:wysihtml5', props={
-        'label': 'wysihtml5 Field',
-        'focus': True,
-        'size': 'sm',
-        'resize': True,
-        'color': True,
-        'emphasis': True,
-        'font-styles': True,
-        'html': True,
-        'image': True,
-        'justify': True,
-        'link': True,
-        'lists': True,
-    })
-    return [{
-        'widget': ex1,
-        'doc': DOC_WYSIHTML5 if factory.theme != 'bootstrap5'
-               else DOC_WYSIHTML5_DEPRECATION + DOC_WYSIHTML5,
-        'title': 'wysihtml5 Field',
-    }]
+    ex1 = factory('fieldset', name='yafowil_wysihtml5')
+    ex1['text'] = factory(
+        '#field:wysihtml5',
+        props={
+            'label': 'wysihtml5 Field',
+            'focus': True,
+            'size': 'sm',
+            'resize': True,
+            'color': True,
+            'emphasis': True,
+            'font-styles': True,
+            'html': True,
+            'image': True,
+            'justify': True,
+            'link': True,
+            'lists': True,
+        },
+    )
+    return [
+        {
+            'widget': ex1,
+            'doc': DOC_WYSIHTML5
+            if factory.theme != 'bootstrap5'
+            else DOC_WYSIHTML5_DEPRECATION + DOC_WYSIHTML5,
+            'title': 'wysihtml5 Field',
+        }
+    ]

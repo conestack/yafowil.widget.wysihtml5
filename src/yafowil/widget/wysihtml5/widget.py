@@ -13,7 +13,6 @@ wysihtml5_options = [
     # 'resize',
     'size',
     # 'stylesheets',
-
     # -  Toolbar options - #
     'color',
     'emphasis',
@@ -43,7 +42,8 @@ factory.register(
     'wysihtml5',
     extractors=[generic_extractor, generic_required_extractor],
     edit_renderers=[wysihtml5_textarea_renderer],
-    display_renderers=[wysihtml5_display_renderer])
+    display_renderers=[wysihtml5_display_renderer],
+)
 
 factory.doc['blueprint']['wysihtml5'] = """\
 Add-on blueprint `yafowil.widget.wysihtml5
